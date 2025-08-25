@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.example.donation_project.controller.LoginController"
+           stylesheets="/org/example/donation_project/css/app-light.css"> <!-- Correctly closed StackPane tag -->
+    <!-- Root padding for comfortable layout -->
+    <children>
+        <BorderPane maxWidth="420" prefWidth="420">
+            <center>
+                <VBox spacing="16.0" alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
+                    <padding>
+                        <Insets top="32" right="28" bottom="28" left="28"/>
+                    </padding>
+
+                    <!-- App name / title -->
+                    <VBox spacing="6">
+                        <Label text="Welcome back" styleClass="h1"/>
+                        <Label text="Sign in to continue" styleClass="muted"/>
+                    </VBox>
+
+                    <!-- Error label (hidden by default via CSS) -->
+                    <Label fx:id="errorLabel" text=""
+                           visible="false" managed="false"
+                           styleClass="error-banner"/>
+
+                    <!-- Email -->
+                    <VBox spacing="6">
+                        <Label text="Email" styleClass="label"/>
+                        <TextField fx:id="emailField" promptText="you@example.com" />
+                    </VBox>
+
+                    <!-- Password -->
+                    <VBox spacing="6">
+                        <Label text="Password" styleClass="label"/>
+                        <PasswordField fx:id="passwordField" promptText="••••••••" />
+                    </VBox>
+
+                    <!-- Actions -->
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <Button fx:id="loginButton" text="Sign in" defaultButton="true"
+                                onAction="#handleLogin" />
+                        <Hyperlink fx:id="forgotLink" text="Forgot password?"
+                                   onAction="#handleForgotPassword"/>
+                        <Pane HBox.hgrow="ALWAYS"/>
+                        <Hyperlink fx:id="signupLink" text="Create account"
+                                   onAction="#handleOpenSignup"/>
+                    </HBox>
+
+                    <!-- Tiny footer -->
+                    <Text text="By continuing, you agree to our Terms &amp; Privacy."
+                          styleClass="caption muted" wrappingWidth="360"/>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
+</StackPane>
