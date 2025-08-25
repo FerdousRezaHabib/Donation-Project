@@ -2,20 +2,31 @@ package org.example.donation_project.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public final class LoginController {
 
-    @FXML private TextField emailField;
-    @FXML private PasswordField passwordField;
-    @FXML private Label errorLabel;
-    @FXML private Button loginButton;
-    @FXML private Hyperlink forgotLink;
-    @FXML private Hyperlink signupLink;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private Label errorLabel;
+    @FXML
+    private Button loginButton;
+    @FXML
+    private Hyperlink forgotLink;
+    @FXML
+    private Hyperlink signupLink;
 
     @FXML
     private void initialize() {
@@ -29,7 +40,7 @@ public final class LoginController {
     @FXML
     private void handleLogin(ActionEvent e) {
         String email = emailField.getText() == null ? "" : emailField.getText().trim();
-        String pass  = passwordField.getText() == null ? "" : passwordField.getText();
+        String pass = passwordField.getText() == null ? "" : passwordField.getText();
 
         if (email.isEmpty() || pass.isEmpty()) {
             showError("Please enter both email and password.");
@@ -55,11 +66,28 @@ public final class LoginController {
         System.out.println("Forgot password clicked");
     }
 
+    //    @FXML
+//    private void handleOpenSignup(ActionEvent e) {
+//        // TODO: navigate to signup scene
+//        System.out.println("Open signup clicked");
+//    }
     @FXML
-    private void handleOpenSignup(ActionEvent e) {
-        // TODO: navigate to signup scene
-        System.out.println("Open signup clicked");
+    private void handleOpenSignup(ActionEvent e) throws IOException {
+        // Close the current login window
+        Stage stage = (Stage) loginButton.getScene().getWindow(); // Assuming loginButton is in the current scene
+        stage.close();
+
+        // Load the signup screen
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/donation_project/fxml/Signup.fxml"));
+        Scene signupScene = new Scene(loader.load());
+
+        // Create a new stage (window) for the signup screen
+        Stage signupStage = new Stage();
+        signupStage.setTitle("Signup");
+        signupStage.setScene(signupScene);
+        signupStage.show();
     }
+
 
     private void showError(String msg) {
         if (errorLabel != null) {

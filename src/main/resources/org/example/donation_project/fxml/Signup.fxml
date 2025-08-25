@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.example.donation_project.controller.SignupController">
+    <BorderPane maxWidth="420" prefWidth="420">
+        <center>
+            <VBox spacing="16.0" alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
+                <padding>
+                    <Insets top="32" right="28" bottom="28" left="28"/>
+                </padding>
+
+                <!-- App name / title -->
+                <VBox spacing="6">
+                    <Label text="Create a new account" styleClass="h1"/>
+                    <Label text="Sign up to get started" styleClass="muted"/>
+                </VBox>
+
+                <!-- Error label (hidden by default via CSS) -->
+                <Label fx:id="errorLabel"
+                       visible="false" managed="false"
+                       styleClass="error-banner"/>
+
+                <!-- Email -->
+                <VBox spacing="6">
+                    <Label text="Email" styleClass="label"/>
+                    <TextField fx:id="emailField" promptText="you@example.com"/>
+                </VBox>
+
+                <!-- Password -->
+                <VBox spacing="6">
+                    <Label text="Password" styleClass="label"/>
+                    <PasswordField fx:id="passwordField" promptText="••••••••"/>
+                </VBox>
+
+                <!-- Confirm Password -->
+                <VBox spacing="6">
+                    <Label text="Confirm Password" styleClass="label"/>
+                    <PasswordField fx:id="confirmPasswordField" promptText="••••••••"/>
+                </VBox>
+
+                <!-- Actions -->
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <Button fx:id="signupButton" text="Sign Up" defaultButton="true"
+                            onAction="#handleSignup"/>
+                    <Pane HBox.hgrow="ALWAYS"/>
+                    <Hyperlink fx:id="loginLink" text="Already have an account? Login"
+                               onAction="#handleLogin"/>
+                </HBox>
+
+                <!-- Tiny footer -->
+                <Text text="By continuing, you agree to our Terms &amp; Privacy."
+                      styleClass="caption muted" wrappingWidth="360"/>
+            </VBox>
+        </center>
+    </BorderPane>
+</StackPane>
