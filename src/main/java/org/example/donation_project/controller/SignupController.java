@@ -56,8 +56,8 @@ public class SignupController {
             User newUser = new User();
             newUser.setEmail(email);
             newUser.setPasswordHash(password); // You should hash the password
-            newUser.setRole(User.Role.student); // Assuming a default user role
-            newUser.setStatus(User.Status.active); // Assuming active status
+            newUser.setRole(User.Role.STUDENT); // Assuming a default user role
+            newUser.setStatus(User.Status.ACTIVE); // Assuming active status
 
             long userId = userDAO.createUser(newUser); // Create user and return the generated ID
 
