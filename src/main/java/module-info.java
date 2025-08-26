@@ -11,6 +11,7 @@ module org.example.donation_project {
 
     requires java.sql;
     requires jbcrypt;
+    requires mysql.connector.j;
 
     // FXML needs reflective access to controllers:
     opens org.example.donation_project.controller to javafx.fxml;

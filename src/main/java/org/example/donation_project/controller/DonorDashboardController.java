@@ -107,6 +107,7 @@ public class DonorDashboardController {
     }
 
     // Handle the "Donate" button click (donating to a student)
+    @FXML
     private void handleDonate(ActionEvent event) {
         // Show a dialog or transition to a donation page to enter donation details
         System.out.println("Donate button clicked");
