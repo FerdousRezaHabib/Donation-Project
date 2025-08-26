@@ -134,4 +134,14 @@ public class UserDAO {
             }
         }
     }
+    public void softDelete(long userId) throws SQLException {
+        final String sql = "UPDATE users SET soft_deleted = 1 WHERE id = ?";
+
+        try (Connection conn = Db.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setLong(1, userId);
+            ps.executeUpdate();
+        }
+    }
+
 }

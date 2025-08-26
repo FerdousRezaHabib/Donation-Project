@@ -21,4 +21,6 @@ module org.example.donation_project {
     // Expose APIs (optional for controllers, but handy if other modules refer to them):
     exports org.example.donation_project;
     exports org.example.donation_project.controller;
+    exports org.example.donation_project.service;
+    opens org.example.donation_project.service to javafx.fxml;
 }

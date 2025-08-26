@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.donation_project.controller.DonorDashboardController">
+
+    <!-- Top section: Header with donor's name and status -->
+    <top>
+        <HBox spacing="16" alignment="CENTER_LEFT" styleClass="header">
+            <Text text="Donor Dashboard" styleClass="h1"/>
+            <Spacer HBox.hgrow="ALWAYS"/>
+            <Label fx:id="donorNameLabel" text="Donor Name" styleClass="header-text"/>
+            <Label fx:id="donorStatusLabel" text="Active" styleClass="status-label"/>
+        </HBox>
+    </top>
+
+    <!-- Left section: Notifications pane -->
+    <left>
+        <VBox spacing="16" padding="16" styleClass="sidebar">
+            <Label text="Notifications" styleClass="section-title"/>
+            <ListView fx:id="notificationList" styleClass="notification-list"/>
+        </VBox>
+    </left>
+
+    <!-- Center section: Main content of the dashboard -->
+    <center>
+        <VBox spacing="16" padding="16" styleClass="main-content">
+            <Label text="Received Donations" styleClass="section-title"/>
+            <TableView fx:id="receivedDonationsTable" styleClass="donations-table">
+                <!-- Define your columns here -->
+                <columns>
+                    <TableColumn text="Donation ID" fx:id="donationIdColumn"/>
+                    <TableColumn text="Amount" fx:id="amountColumn"/>
+                    <TableColumn text="Date" fx:id="dateColumn"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <!-- Right section: Profile card -->
+    <right>
+        <VBox spacing="16" padding="16" styleClass="profile-card">
+            <Label text="Your Profile" styleClass="section-title"/>
+            <Label fx:id="profileNameLabel" text="John Doe" styleClass="profile-name"/>
+            <Label fx:id="profileSchoolLabel" text="University of Example" styleClass="profile-school"/>
+            <ImageView fx:id="profileImage" styleClass="profile-photo"/>
+        </VBox>
+    </right>
+
+    <!-- Bottom section: Footer with "Donate" button -->
+    <bottom>
+        <HBox spacing="16" alignment="CENTER" styleClass="footer">
+            <Button fx:id="donateButton" text="Donate" onAction="#handleDonate"/>
+            <Spacer HBox.hgrow="ALWAYS"/>
+            <Text text="Thank you for your generosity!" styleClass="footer-text"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
