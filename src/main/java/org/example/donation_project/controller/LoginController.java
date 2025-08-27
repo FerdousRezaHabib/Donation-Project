@@ -3,6 +3,7 @@ package org.example.donation_project.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
@@ -37,6 +38,29 @@ public final class LoginController {
         }
     }
 
+//    @FXML
+//    private void handleLogin(ActionEvent e) {
+//        String email = emailField.getText() == null ? "" : emailField.getText().trim();
+//        String pass = passwordField.getText() == null ? "" : passwordField.getText();
+//
+//        if (email.isEmpty() || pass.isEmpty()) {
+//            showError("Please enter both email and password.");
+//            return;
+//        }
+//
+//        // TODO: call your AuthService here
+//        // boolean ok = authService.login(email, pass);
+//        boolean ok = true; // placeholder for now
+//
+//        if (!ok) {
+//            showError("Invalid email or password.");
+//        } else {
+//            hideError();
+//            // TODO: navigate to dashboard
+//            System.out.println("Logged in as " + email);
+//        }
+//    }
+
     @FXML
     private void handleLogin(ActionEvent e) {
         String email = emailField.getText() == null ? "" : emailField.getText().trim();
@@ -55,10 +79,38 @@ public final class LoginController {
             showError("Invalid email or password.");
         } else {
             hideError();
-            // TODO: navigate to dashboard
-            System.out.println("Logged in as " + email);
+            // Navigate to donor dashboard
+            try {
+                // Load the donor dashboard screen
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/donation_project/fxml/DonorDashboard.fxml"));
+
+                // Check if the resource exists
+                if (loader.getLocation() == null) {
+                    showError("Dashboard file not found.");
+                    return;
+                }
+
+                Parent root = loader.load();
+                Scene dashboardScene = new Scene(root);
+
+                // Close the current login window
+                Stage stage = (Stage) loginButton.getScene().getWindow();
+                stage.close();
+
+                // Create a new stage for the dashboard
+                Stage dashboardStage = new Stage();
+                dashboardStage.setTitle("Donor Dashboard");
+                dashboardStage.setScene(dashboardScene);
+                dashboardStage.show();
+
+            } catch (IOException ex) {
+                showError("Failed to load dashboard: " + ex.getMessage());
+                ex.printStackTrace();
+            }
         }
     }
+
+
 
     @FXML
     private void handleForgotPassword(ActionEvent e) {

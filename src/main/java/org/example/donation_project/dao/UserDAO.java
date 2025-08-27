@@ -16,8 +16,8 @@ public class UserDAO {
         u.setId(rs.getLong("id"));
         u.setEmail(rs.getString("email"));
         u.setPasswordHash(rs.getString("password_hash"));
-        u.setRole(User.Role.valueOf(rs.getString("role")));
-        u.setStatus(User.Status.valueOf(rs.getString("status")));
+        u.setRole(User.Role.valueOf(rs.getString("role").toUpperCase()));
+        u.setStatus(User.Status.valueOf(rs.getString("status").toUpperCase()));
         Timestamp c = rs.getTimestamp("created_at");
         Timestamp m = rs.getTimestamp("updated_at");
         u.setCreatedAt(c != null ? c.toLocalDateTime() : null);
